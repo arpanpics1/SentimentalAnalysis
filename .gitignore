@@ -73,6 +73,7 @@ docs/_build/
 
 # PyBuilder
 .pybuilder/
+.vscode/
 target/
 
 # Jupyter Notebook
