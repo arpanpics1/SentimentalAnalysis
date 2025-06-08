@@ -7,9 +7,18 @@ def main():
     api = TwitterAPI(API_KEY, API_SECRET)
 #    api.test()
     bearer_token = api.get_bearer_token()
-    tweets_data = api.search_crypto_tweets(bearer_token, max_results=10)
+    
+    #tweets_data = api.search_crypto_tweets(bearer_token, max_results=10)
 
-    saveCsv = SaveCSVData("/Users/arpan/Documents/Github/Python/SentimentalAnalysis/data/tweets_data.csv")
+    tweets_data = api.search_elon_tweets(bearer_token, max_results=100)
+
+
+    # Save the Crypt tweets data to a CSV file
+    #saveCsv = SaveCSVData("/Users/arpan/Documents/Github/Python/SentimentalAnalysis/data/tweets_data.csv")
+    
+    # Save the Elon musk tweets data to a CSV file
+    saveCsv = SaveCSVData("/Users/arpan/Documents/Github/Python/SentimentalAnalysis/data/elonmusk.csv")
+
     saveCsv.save_data(tweets_data)
 
     print("\n🪙 Recent Tweets on Cryptocurrency:\n")

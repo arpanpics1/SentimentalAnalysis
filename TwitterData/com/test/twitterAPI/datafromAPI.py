@@ -42,5 +42,19 @@ class TwitterAPI():
     def test(self):
         print("Testing TwitterAPI class...")
 
+    # Step 2: Search Tweets from Elon Musk
+    def search_elon_tweets(self, bearer_token, query="from:44196397", max_results=10):
+        url = "https://api.twitter.com/2/tweets/search/recent"
+        headers = {"Authorization": f"Bearer {bearer_token}"}
+        params = {
+            "query": query,
+            "max_results": max_results,
+            "tweet.fields": "created_at,text,author_id,public_metrics,lang,geo,referenced_tweets,conversation_id",
+        }
+
+        response = requests.get(url, headers=headers, params=params)
+        if response.status_code != 200:
+            raise Exception(f"Search error: {response.status_code} - {response.text}")
+        return response.json()
 # Step 3: Run it all
 
